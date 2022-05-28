@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:zymee/screens/HomeScreen.dart';
+import '../resources/auth_methods.dart';
 
 import 'RegistrationScreen.dart';
 
@@ -20,6 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
   //editing controller
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
+
+  //Create an instance of authMethods
+  //Firebase auth from instance created in our app
+  final AuthMethods _authMethods = AuthMethods();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         },
         onSaved: (value) {
-          emailController.text = value!;
+          passwordController.text = value!;
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
@@ -86,8 +92,15 @@ class _LoginScreenState extends State<LoginScreen> {
         child: MaterialButton(
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
-          onPressed: () {
-
+          onPressed: () async{
+            //ADD LOGIN FUNCTION
+            bool res = await _authMethods.signInWithEmail(
+                context, emailController.text, passwordController.text);
+            if (res) {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => HomeScreen())
+              );
+            }
           },
           child: Text("Login",
               textAlign: TextAlign.center,
@@ -97,9 +110,30 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.bold)),
         ));
 
-
-
-
+    final googleSignInButton = Material(
+        elevation: 5,
+        borderRadius: BorderRadius.circular(30),
+        color: Colors.pinkAccent.shade200,
+        child: MaterialButton(
+          padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          minWidth: MediaQuery.of(context).size.width,
+          onPressed: () async{
+            //ADD LOGIN FUNCTION
+            bool res = await _authMethods.signInWithGoogle(
+                context);
+            if (res) {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => HomeScreen())
+              );
+            }
+          },
+          child: Text("Continue with Google",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold)),
+        ));
 
 
     return SafeArea(
@@ -137,6 +171,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                const SizedBox(height: 35),
                                 loginButton,
                                const SizedBox(height: 15),
+                                googleSignInButton,
+                                const SizedBox(height: 15),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[

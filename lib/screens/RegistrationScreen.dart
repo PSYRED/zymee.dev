@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../resources/auth_methods.dart';
+import 'HomeScreen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -20,6 +23,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final phoneNumberEditingController = new TextEditingController();
   final passwordEditingController = new TextEditingController();
   final confirmPasswordEditingController = new TextEditingController();
+
+  //Creating auth instance
+  final AuthMethods _auth = AuthMethods();
 
   @override
   Widget build(BuildContext context) {
@@ -166,8 +172,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         child: MaterialButton(
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
-          onPressed: () {
-
+          onPressed: () async{
+                if(passwordEditingController.text == confirmPasswordEditingController.text && emailEditingController.text.isNotEmpty){
+                  bool res = await _auth.registerWithEmailAndPassword(
+                      context, emailEditingController.text, passwordEditingController.text);
+                  if (res) {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => HomeScreen())
+                    );
+                  }
+                } else {
+                  Fluttertoast.showToast(msg: "Error, Please fill in values correctly");
+                }
           },
           child: Text("SignUp",
               textAlign: TextAlign.center,

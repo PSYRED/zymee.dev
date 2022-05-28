@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "612417216134",
+    "project_id": "zymee-dev",
+    "storage_bucket": "zymee-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612417216134:android:526ecc133c82e565cafb07",
+        "android_client_info": {
+          "package_name": "com.example.zymee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612417216134-6pbhidv2usn1enovqlj9u7el5oqjq3co.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zymee",
+            "certificate_hash": "d7717507c9af8f5648996d7101e63fb429d328cf"
+          }
+        },
+        {
+          "client_id": "612417216134-gu2o47dfcko7eudpctk6phh637pdpdpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpuPBHO7KPZ_P436j7wk1nFJVzkSHCQ-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612417216134-gu2o47dfcko7eudpctk6phh637pdpdpl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
