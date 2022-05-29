@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../modals/userModals.dart';
 import '../resources/auth_methods.dart';
 import 'HomeScreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -26,6 +28,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   //Creating auth instance
   final AuthMethods _auth = AuthMethods();
+
 
   @override
   Widget build(BuildContext context) {
@@ -175,8 +178,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           onPressed: () async{
                 if(passwordEditingController.text == confirmPasswordEditingController.text && emailEditingController.text.isNotEmpty){
                   bool res = await _auth.registerWithEmailAndPassword(
-                      context, emailEditingController.text, passwordEditingController.text);
+                      context, emailEditingController.text, passwordEditingController.text, fullNameEditingController.text, phoneNumberEditingController.text);
                   if (res) {
+                    postToUserCollection();
                     Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => HomeScreen())
                     );
@@ -254,5 +258,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             )))),
               ))),
     );
+  }
+  postToUserCollection() async {
+    //calling our firestore
+    //calling our user model
+    //sending values
+    UserModel userModel = UserModel();
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    //writing values
+    userModel.email = _auth.user.email;
+    userModel.uid = _auth.user.uid;
+    userModel.fullName = fullNameEditingController.text;
+    userModel.phoneNumber = phoneNumberEditingController.text;
+
+    await firebaseFirestore
+        .collection('users')
+        .doc(_auth.user.uid)
+        .set(userModel.toMap());
+
+
   }
 }

@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:zymee/screens/LoginScreen.dart';
 import '../utils/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../modals/userModals.dart';
 
 class AuthMethods {
   //Auth Methods can be also refered as an auth repository
@@ -45,9 +46,10 @@ class AuthMethods {
       if (user != null) {
         if (userCredential.additionalUserInfo!.isNewUser) {
           await _firestore.collection('users').doc(user.uid).set({
-            'username': user.displayName,
             'uid': user.uid,
-            'profilePhoto': user.photoURL,
+            'fullName': user.displayName,
+            'email' : user.email,
+            'phoneNumber': user.phoneNumber
           });
         }
         res = true;
@@ -87,7 +89,7 @@ class AuthMethods {
 //Register Email Function
 //Returns TRUE if user has been registered
   Future<bool> registerWithEmailAndPassword(
-      BuildContext context, String email, String password) async {
+      BuildContext context, String email, String password, String fullName, String phoneNumber) async {
     /*
     TODO:
     Finish Register page UI:

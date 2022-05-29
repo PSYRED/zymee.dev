@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zymee/resources/auth_methods.dart';
 import './screens/LoginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'screens/HomeScreen.dart';
 
 
 void main() async {
@@ -10,17 +13,34 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'zymee.',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: StreamBuilder(
+        stream: AuthMethods().authChanges,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          if (snapshot.hasData) {
+            return const HomeScreen();
+          }
+
+          return const LoginScreen();
+        },
+      ),
     );
   }
 }
