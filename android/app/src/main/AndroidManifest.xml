@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.zymee">
+    package="com.example.zymee"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
    <application
+        tools:replace="android:label"
         android:label="zymee"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

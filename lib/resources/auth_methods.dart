@@ -50,7 +50,17 @@ class AuthMethods {
             'fullName': user.displayName,
             'email' : user.email,
             'phoneNumber': user.phoneNumber
-          });
+          })
+              .then((value) {
+            _firestore.collection('userAccount').doc(user.uid).set({
+              'uid': user.uid,
+              'username': user.displayName,
+              'profilePictureUrl': user.photoURL,
+              'bio': null,
+              'meetings': null
+            });
+          }
+          );
         }
         res = true;
       }
