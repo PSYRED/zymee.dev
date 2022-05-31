@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:zymee/resources/firestore.dart';
 import '../resources/auth_methods.dart';
 import '../modals/userModals.dart';
 
@@ -25,6 +26,7 @@ class _MeetingState extends State<Meeting> {
   bool? isVideoMuted = true;
 
   final TextEditingController roomID = TextEditingController();
+  final FirestoreMethods _firestoreMethods = FirestoreMethods();
 
   @override
   void initState() {
@@ -229,6 +231,8 @@ class _MeetingState extends State<Meeting> {
         "chromeExtensionBanner": null,
         "userInfo": {"displayName": userModel.fullName}
       };
+
+      _firestoreMethods.addToMeetingHistory(roomID.text);
 
     debugPrint("JitsiMeetingOptions: $options");
     await JitsiMeet.joinMeeting(

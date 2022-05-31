@@ -41,6 +41,7 @@ dependencies:
   jitsi_meet: ^4.0.0
   path_provider: ^2.0.10
   image_picker: ^0.8.5+3
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

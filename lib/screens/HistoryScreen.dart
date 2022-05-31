@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../resources/firestore.dart';
+import 'package:intl/intl.dart';
 
 class HistoryMeeting extends StatefulWidget {
   const HistoryMeeting({Key? key}) : super(key: key);
@@ -19,19 +21,29 @@ class _HistoryMeetingState extends State<HistoryMeeting> {
               Navigator.of(context).pop();
             },
           ),
+          title: const Text("My Meetings"),
         ),
         backgroundColor: Colors.white,
-        body: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("Meeting Screen")
-                ],
+        body: StreamBuilder(
+                      stream: FirestoreMethods().meetingHistory,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return ListView.builder(
+                          itemCount: (snapshot.data! as dynamic).docs.length,
+                            itemBuilder: (context, index) => ListTile(
+                                title: Text('Room ID: ${(snapshot.data! as dynamic).docs[index]['meetingName']}'),
+                              subtitle: Text(
+                                'Joined on ${DateFormat.yMMMd().format((snapshot.data! as dynamic).docs[index]['CreatedAt'].toDate())}',
+                              ),
+                            )
+                        );
+                      })
               )
-          ),
-        )
-    ));
+          );
   }
 }

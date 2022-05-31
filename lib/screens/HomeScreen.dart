@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zymee/modals/userModals.dart';
 import 'package:zymee/screens/HistoryScreen.dart';
 import 'package:zymee/screens/Meeting.dart';
+import 'package:zymee/screens/MeetingSchedule.dart';
 import 'package:zymee/screens/ProfileScreen.dart';
 import '../resources/auth_methods.dart';
 
@@ -59,12 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 20.0),
                   customNavigation(
-                      const Icon(Icons.account_circle, size: 50.0),
+                      const Icon(Icons.calendar_today_outlined, size: 50.0),
                      Colors.pinkAccent,
-                     const Text("My Profile"),
+                     const Text("Schedule"),
                           (){
                         Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) => ProfileScreen()));
+                            .push(MaterialPageRoute(builder: (context) => MeetingSchedule()));
                       }
                   ),
                   const SizedBox(height: 20.0),
