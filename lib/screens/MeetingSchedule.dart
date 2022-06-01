@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/CalendarWidget.dart';
+
 class MeetingSchedule extends StatefulWidget {
   const MeetingSchedule({Key? key}) : super(key: key);
 
@@ -15,9 +17,7 @@ class _MeetingScheduleState extends State<MeetingSchedule> {
         title: const Text("Schedule Meeting"),
         centerTitle: true,
       ),
-      body: Container(
-        child: Text("Schedule a meeting here"),
-      ),
+      body: CalendarWidget()
     );
   }
 }

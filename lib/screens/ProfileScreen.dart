@@ -95,18 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Container(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: profileURL == null ?
-                      ClipOval(
-                        child: Material(
-                          color: Colors.transparent,
-                          child: Ink.image(
-                            image: NetworkImage(
-                                "https://firebasestorage.googleapis.com/v0/b/zymee-dev.appspot.com/o/assets%2F%20Default.png?alt=media&token=7bc1d685-7dcb-49c3-9ff4-21622bf2a7f6"),
-                            fit: BoxFit.cover,
-                            width: 150,
-                            height: 150,
-                          ),
-                        )) :
+                      child:
                       ClipOval(
                           child: Material(
                             color: Colors.transparent,

@@ -10,10 +10,11 @@ class UserModel {
   String? fullName;
   String? email;
   String? phoneNumber;
+  bool? isVerified;
 
 
   UserModel(
-      {this.uid, this.fullName, this.email, this.phoneNumber});
+      {this.uid, this.fullName, this.email, this.phoneNumber, this.isVerified});
 
   //Fetching Data from server
   factory UserModel.fromMap(map) {
@@ -21,7 +22,9 @@ class UserModel {
         uid: map['uid'],
         email: map['email'],
         fullName: map['fullName'],
-        phoneNumber: map['phoneNumber']);
+        phoneNumber: map['phoneNumber'],
+        isVerified: map['isVerified']
+    );
   }
 
   //Sending data to server
@@ -30,7 +33,8 @@ class UserModel {
       'uid': uid,
       'email': email,
       'fullName': fullName,
-      'phoneNumber': phoneNumber
+      'phoneNumber': phoneNumber,
+      'isVerified' : isVerified
     };
   }
 }

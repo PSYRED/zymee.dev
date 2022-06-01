@@ -5,6 +5,8 @@ import '../resources/auth_methods.dart';
 import 'HomeScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'SetUpScreen.dart';
+
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
@@ -182,7 +184,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   if (res) {
                     postToUserCollection();
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => HomeScreen())
+                        MaterialPageRoute(builder: (context) => SetUpScreen())
                     );
                   }
                 } else {
@@ -271,12 +273,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     userModel.uid = _auth.user.uid;
     userModel.fullName = fullNameEditingController.text;
     userModel.phoneNumber = phoneNumberEditingController.text;
+    userModel.isVerified = false;
 
     await firebaseFirestore
         .collection('users')
         .doc(_auth.user.uid)
         .set(userModel.toMap());
-
-
   }
 }

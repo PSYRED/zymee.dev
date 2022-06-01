@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:zymee/modals/userModals.dart';
+import 'package:zymee/screens/ContactScreen.dart';
 import 'package:zymee/screens/HistoryScreen.dart';
 import 'package:zymee/screens/Meeting.dart';
 import 'package:zymee/screens/MeetingSchedule.dart';
@@ -66,6 +67,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           (){
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) => MeetingSchedule()));
+                      }
+                  ),
+                  const SizedBox(height: 20.0),
+                  customNavigation(
+                      const Icon(Icons.contact_phone_rounded, size: 50.0),
+                      Colors.deepOrangeAccent,
+                      const Text("Schedule"),
+                          (){
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) => ContactScreen()));
                       }
                   ),
                   const SizedBox(height: 20.0),

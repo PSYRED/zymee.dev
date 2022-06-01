@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zymee/resources/auth_methods.dart';
+import 'package:zymee/widgets/checkVerification.dart';
 import './screens/LoginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
           }
 
           if (snapshot.hasData) {
-            return const HomeScreen();
+            return  CheckVerification();
           }
 
           return const LoginScreen();

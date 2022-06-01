@@ -49,10 +49,11 @@ class AuthMethods {
             'uid': user.uid,
             'fullName': user.displayName,
             'email' : user.email,
-            'phoneNumber': user.phoneNumber
+            'phoneNumber': user.phoneNumber,
+            'isVerified' : false
           })
               .then((value) {
-            _firestore.collection('userAccount').doc(user.uid).set({
+            _firestore.collection('UserAccount').doc(user.uid).set({
               'uid': user.uid,
               'username': user.displayName,
               'profilePictureUrl': user.photoURL,

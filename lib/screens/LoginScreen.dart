@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:zymee/screens/HomeScreen.dart';
+import 'package:zymee/widgets/checkVerification.dart';
 import '../resources/auth_methods.dart';
 
 import 'RegistrationScreen.dart';
@@ -94,11 +94,12 @@ class _LoginScreenState extends State<LoginScreen> {
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () async{
             //ADD LOGIN FUNCTION
-            bool res = await _authMethods.signInWithEmail(
-                context, emailController.text, passwordController.text);
-            if (res) {
+            //ADD LOGIN FUNCTION
+            bool res = await _authMethods.signInWithEmail(context, emailController.text, passwordController.text);
+            print("Login Button Pressed");
+            if(res){
               Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => HomeScreen())
+                  MaterialPageRoute(builder: (context) => CheckVerification())
               );
             }
           },
@@ -119,11 +120,11 @@ class _LoginScreenState extends State<LoginScreen> {
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () async{
             //ADD LOGIN FUNCTION
-            bool res = await _authMethods.signInWithGoogle(
-                context);
-            if (res) {
+            bool res = await _authMethods.signInWithGoogle(context);
+            print("Google Signin Button Pressed");
+            if(res){
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => HomeScreen())
+                MaterialPageRoute(builder: (context) => CheckVerification())
               );
             }
           },
