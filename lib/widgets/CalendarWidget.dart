@@ -143,7 +143,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           ),
                           onTap: (){
                             Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) => CreateSchedule(date: _selectedDay!)));
+                                .push(MaterialPageRoute(builder: (context) => CreateSchedule(date: _selectedDay == null ? _focusedDay : _selectedDay!)));
                           },
                         )
                     )

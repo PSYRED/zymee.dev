@@ -2,6 +2,10 @@
     package="com.example.zymee"
     xmlns:tools="http://schemas.android.com/tools"
     >
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
    <application
         tools:replace="android:label"
         android:label="zymee"
@@ -34,4 +38,14 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+
+    <queries>
+        <!-- If your app makes calls -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
+
+
 </manifest>

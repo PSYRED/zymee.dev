@@ -34,7 +34,7 @@ class FirestoreMethods {
   }
 
 
-  void scheduleMeeting(String meetingName, String meetingDescription, DateTime _date) async{
+  void scheduleMeeting(String meetingName, String meetingDescription, DateTime? _date) async{
 
     try {
       await _firestore

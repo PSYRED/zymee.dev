@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +28,8 @@ class _MeetingState extends State<Meeting> {
   final TextEditingController roomID = TextEditingController();
   final FirestoreMethods _firestoreMethods = FirestoreMethods();
 
+
+
   @override
   void initState() {
     super.initState();
@@ -42,6 +44,8 @@ class _MeetingState extends State<Meeting> {
         .get()
         .then((value) {
       this.userModel = UserModel.fromMap(value.data());
+
+      roomID.text = generateRandomString(6);
       setState(() {});
     });
   }
@@ -193,6 +197,12 @@ class _MeetingState extends State<Meeting> {
     setState(() {
       isVideoMuted = value;
     });
+  }
+
+  String generateRandomString(int len) {
+    var r = Random();
+    const _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
   }
 
   _joinMeeting() async {

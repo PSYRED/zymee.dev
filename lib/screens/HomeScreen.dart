@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   customNavigation(
                       const Icon(Icons.contact_phone_rounded, size: 50.0),
                       Colors.deepOrangeAccent,
-                      const Text("Schedule"),
+                      const Text("Contacts"),
                           (){
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) => ContactScreen()));
@@ -190,10 +190,3 @@ class _HomeScreenState extends State<HomeScreen> {
 
 }
 
-/*
-* TODO:
-* - Design Navigation
-*
-*
-*
-* */

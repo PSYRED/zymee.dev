@@ -24,6 +24,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
+  //Text Controller to edit user Info
+  final userNameConroller = TextEditingController();
+  final bioController = TextEditingController();
+
   //Initiating state and getting user data
   @override
   void initState() {
@@ -39,9 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  //Text Controller to edit user Info
-  final userNameConroller = new TextEditingController();
-  final bioController = new TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
