@@ -10,22 +10,9 @@ where user's can interact and use web conferencing tools.
 This project was used for the bachelor thesis of science
 at the University of Economy in Bydgoszcz, with Eng. Skiba Grzegorz, M.Sc. as the project supervisor.
 ### Development time => 6 months
-### Framework used => Flutter
-### Written in => Dart
 ### Target platform => Android
 
 
-
-# Zymee DEV
-
-The following repository is the development in works
-of building an online video conferencing mobile application
-where user's can interact and use web conferencing tools.
-
-This project was used for the bachelor thesis of science
-at the University of Economy in Bydgoszcz, with Eng. Skiba Grzegorz, M.Sc. as the project supervisor.
-### Development time => 6 months
-### Target platform => Android
 
 
 ## Tech Stack
@@ -34,6 +21,14 @@ at the University of Economy in Bydgoszcz, with Eng. Skiba Grzegorz, M.Sc. as th
 
 **Server:** Firebase, Jitsy Meet
 
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  Flutter run
+```
 
 
 ## Authors
@@ -46,13 +41,4 @@ at the University of Economy in Bydgoszcz, with Eng. Skiba Grzegorz, M.Sc. as th
  - [Jean Noel Nyirisheja](https://github.com/jeanrakitic)
  - [Fernand Karita]()
  - [Eng. Skiba Grzegorz, M.Sc.]()
-
-
-## Running Tests
-
-To run tests, run the following command
-
-```bash
-  Flutter run
-```
 
