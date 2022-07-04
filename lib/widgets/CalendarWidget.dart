@@ -92,12 +92,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           ),
                         ),
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height*0.43,
-                          width: MediaQuery.of(context).size.width*0.85,
-                          color: Colors.red,
-                        child: Text("Must Display Meetings")
-                      ),
                     ],
                     ),
                     Positioned(
@@ -135,9 +129,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                 blurRadius: 30
                               )]
                             ),
-                            child: Text("+", style: TextStyle(
+                            child: Text("Choose Date", style: TextStyle(
                               color: Colors.white,
-                              fontSize: 40.0,
+                              fontSize: 24.0,
                               fontWeight: FontWeight.bold
                             )),
                           ),

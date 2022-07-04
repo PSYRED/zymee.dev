@@ -38,7 +38,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     if (!isVerified) {
       sendVericationEmail();
 
-      Timer.periodic(
+      timer = Timer.periodic(
         Duration(seconds: 3),
             (_) => checkEmailVerified(),
       );
@@ -60,9 +60,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
   Future checkEmailVerified() async {
     //calll after email verification
     await FirebaseAuth.instance.currentUser!.reload();
-
+    isVerified = FirebaseAuth.instance.currentUser!.emailVerified;
     setState(() {
-      isVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+
     });
 
     if (isVerified) {
@@ -261,8 +261,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 animationDuration: Duration(milliseconds: 300),
                 onCompleted: (v) async{
                   try{
-                    await FirebaseAuth.instance
-                        .signInWithCredential(PhoneAuthProvider.credential(verificationId: _verificationCode, smsCode: v))
+                    await FirebaseAuth.instance.currentUser
+                      ?.linkWithCredential(PhoneAuthProvider.credential(verificationId: _verificationCode, smsCode: v))
                         .then((value) async{
                        if(value.user != null){
                          print("User Phone authenticated");

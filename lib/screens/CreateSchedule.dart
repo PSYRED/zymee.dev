@@ -195,7 +195,7 @@ class _CreateScheduleState extends State<CreateSchedule> {
               _firebaseMethods.scheduleMeeting(roomName.text, roomDescription.text, widget.date);
               exportToGoogleCalendar(identifier: "612417216134-6pbhidv2usn1enovqlj9u7el5oqjq3co.apps.googleusercontent.com", summary: "Meeting scheduled on zymee created by {$_auth.user.email}", description: roomDescription.text, startDateTime: widget.date, startTimeZone: "3PM GMT", endDateTime: widget.date, endTimeZone: "4PM GMT");
               Fluttertoast.showToast(msg: "Meeting Scheduled");
-              Navigator.of(context).pop();
+
               }
              else {
               Fluttertoast.showToast(msg: "Error, Please fill in values correctly");
